@@ -171,6 +171,7 @@ class FroniusSensor(Entity):
         self._icon = SENSOR_TYPES[sensor_type][6]
         self._powerflow = powerflow
         self._smartmeter = smartmeter
+        self._state_class = measurement
 
     @property
     def name(self):
@@ -223,6 +224,11 @@ class FroniusSensor(Entity):
     def should_poll(self):
         """Device should not be polled, returns False."""
         return False
+    
+    @property
+    def state_class(self):
+        """State class."""
+        return self._state_class
 
     async def async_update(self, utcnow=None):
         """Get the latest data from inverter and update the states."""
