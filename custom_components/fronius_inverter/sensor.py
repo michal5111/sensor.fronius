@@ -9,7 +9,7 @@ import aiohttp
 
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
-from homeassistant.components.sensor import PLATFORM_SCHEMA
+from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
 from homeassistant.const import (
     CONF_MONITORED_CONDITIONS, CONF_NAME, CONF_SCAN_INTERVAL, ATTR_ATTRIBUTION, SUN_EVENT_SUNRISE, SUN_EVENT_SUNSET
     )
@@ -151,7 +151,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
     async_add_entities(dev, True)
 
-class FroniusSensor(Entity):
+class FroniusSensor(SensorEntity):
     """Implementation of the Fronius inverter sensor."""
 
     def __init__(self, device_data, name, sensor_type, scope, units, device_id, powerflow, smartmeter):
