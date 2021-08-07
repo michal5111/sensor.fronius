@@ -171,7 +171,7 @@ class FroniusSensor(Entity):
         self._icon = SENSOR_TYPES[sensor_type][6]
         self._powerflow = powerflow
         self._smartmeter = smartmeter
-        self._state_class = measurement
+        self._state_class = "measurement"
 
     @property
     def name(self):
